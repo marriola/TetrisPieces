@@ -19,16 +19,18 @@ pygtk.require("2.0")
 MATRIX_WIDTH = 50
 MATRIX_HEIGHT = 50
 
-BLOCK_SIZE = 10
+BLOCK_SIZE = 13
 GAP_SIZE = 2
 
-COLOR_MAP = { 0: gtk.gdk.Color("white"),
+MATRIX_BACKGROUND = gtk.gdk.Color("#111111")
+
+COLOR_MAP = { 0: MATRIX_BACKGROUND,
 			  1: gtk.gdk.Color("#cc0000"),
 			  2: gtk.gdk.Color("#cc00cc"),
-			  3: gtk.gdk.Color("#00cc00"),
+			  3: gtk.gdk.Color("#008800"),
 			  4: gtk.gdk.Color("#0000cc"),
 			  5: gtk.gdk.Color("#cc6600"),
-			  6: gtk.gdk.Color("#000000") }
+			  6: gtk.gdk.Color("#00cc88") }
 
 PIECE_I =\
 	[[1],
@@ -286,7 +288,7 @@ class TetrisWindow:
 
 		x, y, width, height = event.area
 		gc = self.pixmap.new_gc()
-		gc.set_rgb_fg_color(gtk.gdk.Color("white"))
+		gc.set_rgb_fg_color(MATRIX_BACKGROUND)
 		self.pixmap.draw_rectangle(gc, gtk.TRUE, 0, 0, width, height)
 
 		for block_y in range(0, len(self.matrix)):
